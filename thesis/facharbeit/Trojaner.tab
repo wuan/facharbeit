@@ -1,0 +1,36 @@
+\begin{center}
+\begin{tabular}{|llllllll|}
+\hline
+\multicolumn{1}{|l}{Nr.} &
+\multicolumn{1}{l}{Name} & 
+\multicolumn{1}{l}{mag} & 
+\multicolumn{1}{l}{i} &
+\multicolumn{1}{l}{e} &
+\multicolumn{1}{l}{$ \mu $} &
+\multicolumn{1}{l}{r} &
+\multicolumn{1}{l|}{$ \varrho $} \\
+\hline
+588	& Achilles 	& 16.0	&10.3	& 0.15	& 298	&$+44^\circ$& 55 km \\
+617	& Patroclus	& 15.8	& 22.1	&0.14	& 299	&$-63$	& 60	\\
+624	& Hector 	& 15.2	& 18.3	& 0.02	& 306	&$+70$	& 78	\\
+659	& Nestor	& 16.3	& 4.5 & 0.11	& 296	&$+74$	& 48	\\
+884	& Priamus	& 16.5	& 8.9	& 0.12	& 298 	&$-82$	& 45	\\
+911	& Agamemnon	& 15.4	& 21.9	& 0.07	& 305	&$+69$	& 70 	\\
+1143	& Odysseus	& 16.0	& 3.1	& 0.09	& 300	&$+66$	& 55	\\
+1172 	& Aeneas	& 16.0	&16.7	& 0.10	& 300	&$-76$	& 55	\\
+1173	& Anchises 	& 16.6	& 7.0	& 0.14	& 308	&$-45$	& 40	\\
+1208 	& Troilus	& 16.3	& 33.7	& 0.09	& 303	&$-60$	& 47	\\
+1404	& Ajax	 	& 16.8	& 18.1	& 0.11	& 302	&$+85$	& 37	\\
+1437	& Diomedes 	& 15.8	& 20.6	& 0.04	& 304	&$+45$	& 61	\\
+1583 	& Antilochus	& 16.5	& 28.3	& 0.05	& 293	&$+33$	& 47	\\
+1647 	& Menelaus	& 18.5	& 5.6 & 0.03 	& 299	&$+71$	& 18	\\
+\hline
+\end{tabular}
+\end{center}
+\noindent\scriptsize
+In der Tabelle ist in Spalte 3 (mag) die photographische Helligkeit zur mittleren Opposition
+gegeben; unter i die Neigung der Bahn gegen die Ekliptik; unter e die Bahnexzentrizität; die
+mittlere tägliche Bewegung $\mu$ ist in Bogensekunden gegeben, für Jupiter beträgt sie
+$299''$; r ist die Distanz von Jupiter in Grad der Länge für die Epoche 1960 Juni 20;
+$\varrho$, der Durchmesser des Planetoiden in Kilometern, wurde aufgrund seiner Helligkeit
+gemessen. Quelle: \cite{Handbuch}
