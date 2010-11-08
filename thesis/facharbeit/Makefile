@@ -9,5 +9,5 @@ all: *.tex
 *.tex: *.fig Makefile
 	fig2dev -L epic *.fig *.tex
 clean:
-	delete *.tex
+	rm -f *.tex
 
