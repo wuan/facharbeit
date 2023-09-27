@@ -25,6 +25,7 @@ jobs:
         id: latex-final
         uses: xu-cheng/latex-action@v2
         with:
+          pre_compile: ./prepare.sh
           root_file: facharbeit.tex
       - name: Collect Warnings
         id: warnings
