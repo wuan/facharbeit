@@ -23,7 +23,7 @@ jobs:
           fetch-depth: 0
       - name: LaTeX iterations
         id: latex-final
-        uses: xu-cheng/latex-action@v2
+        uses: xu-cheng/latex-action@v3
         with:
           pre_compile: ./prepare.sh
           root_file: facharbeit.tex
