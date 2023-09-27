@@ -1,0 +1,40 @@
+name: Build document
+
+on:
+  push:
+    tags: ["*"]
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: LaTeX iterations
+        id: latex-final
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: facharbeit.tex
+      - name: Collect Warnings
+        id: warnings
+        run: |
+          echo "WARNINGS<<EOF" >> $GITHUB_ENV
+          grep "^LaTeX Warning" facharbeit.log | cut -d" " -f3- | tee -a $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+        continue-on-error: true
+      - name: Upload PDF
+        uses: actions/upload-artifact@v3
+        with:
+          name: Facharbeit PDF
+          path: facharbeit.pdf
