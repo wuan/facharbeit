@@ -14,7 +14,7 @@ facharbeit.pdf: facharbeit.tex $(pics)
 # translation into epic
 
 $(pics): %.tex: %.fig
-	fig2dev -L epic $< $@
+	fig2dev -L latex $< $@
 
 clean:
 	rm -f facharbeit.pdf $(pics)
