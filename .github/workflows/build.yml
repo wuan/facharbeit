@@ -55,7 +55,7 @@ jobs:
               issue_number: context.issue.number,
             })
             const botComment = comments.find(comment => {
-              return comment.user.type === 'Bot' && comment.body.includes('Facharbeitl build')
+              return comment.user.type === 'Bot' && comment.body.includes('Facharbeit build')
             })
             // 2. Prepare format of the comment
             const output = `#### Facharbeit build
