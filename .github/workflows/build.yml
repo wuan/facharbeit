@@ -37,5 +37,55 @@ jobs:
       - name: Upload PDF
         uses: actions/upload-artifact@v3
         with:
-          name: Facharbeit PDF
+          name: Facharbeit
           path: facharbeit.pdf
+      - name: Update PR with warnings found
+        uses: actions/github-script@v6
+        continue-on-error: true
+        if: github.event_name == 'pull_request'
+        env:
+          WARNINGS: "${{ env.WARNINGS }}"
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            // 1. Retrieve existing bot comments for the PR
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            })
+            const botComment = comments.find(comment => {
+              return comment.user.type === 'Bot' && comment.body.includes('Facharbeit build')
+            })
+            // 2. Prepare format of the comment
+            const output = `#### Facharbeit build
+            <details><summary>WARNINGS</summary>\n\n
+
+            \`\`\`
+            ${process.env.WARNINGS}
+            \`\`\`
+
+            </details>
+
+            *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`, Workflow: \`${{ github.workflow }}\`*`;
+            // 3. If we have a comment, update it, otherwise create a new one
+            const comment_data = {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: output
+            }
+            if (botComment) {
+              comment_data.comment_id = botComment.id
+              github.rest.issues.updateComment(comment_data)
+            } else {
+              comment_data.issue_number = context.issue.number
+              github.rest.issues.createComment(comment_data)
+            }
+      - name: Create Release
+        id: create_release
+        uses: ncipollo/release-action@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          name: Release ${{ github.ref_name }}
+          artifacts: facharbeit.pdf
+          artifactContentType: application/pdf
