@@ -4,9 +4,11 @@
 pics=skizze1.tex\
      skizze2.tex
 
+gnuplot=funktion1.tex
+
 all: facharbeit.pdf
 
-facharbeit.pdf: facharbeit.tex $(pics)
+facharbeit.pdf: facharbeit.tex $(pics) $(gnuplot)
 	pdflatex facharbeit.tex
 	pdflatex facharbeit.tex
 	pdflatex facharbeit.tex
@@ -16,6 +18,9 @@ facharbeit.pdf: facharbeit.tex $(pics)
 $(pics): %.tex: %.fig
 	fig2dev -L latex $< $@
 
+$(gnuplot): %.tex: %.gnu
+	gnuplot $< 
+
 clean:
-	rm -f facharbeit.pdf $(pics)
+	rm -f facharbeit.pdf $(pics) $(gnuplot)
 
