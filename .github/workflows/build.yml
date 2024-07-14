@@ -26,6 +26,8 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           pre_compile: ./prepare.sh
+          extra_system_packages: |
+            gnuplot
           root_file: facharbeit.tex
       - name: Collect Warnings
         id: warnings
