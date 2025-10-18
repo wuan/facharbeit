@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Install dependecies
+      - name: Install dependencies
         run: sudo apt install gnuplot fig2dev
       - name: Create figures
         run: make pics
