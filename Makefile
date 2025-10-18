@@ -8,12 +8,10 @@ gnuplot=funktion1.tex
 
 all: facharbeit.pdf
 
-facharbeit.pdf: facharbeit.tex $(pics) $(gnuplot)
-	pdflatex facharbeit.tex
-	pdflatex facharbeit.tex
-	pdflatex facharbeit.tex
+facharbeit.pdf: facharbeit.tex pics
+	latexmk -pdf facharbeit.tex
 
-# translation into epic
+pics: $(pics) $(gnuplot)
 
 $(pics): %.tex: %.fig
 	fig2dev -L latex $< $@
@@ -22,5 +20,5 @@ $(gnuplot): %.tex: %.gnu
 	gnuplot $< 
 
 clean:
-	rm -f facharbeit.pdf $(pics) $(gnuplot)
+	rm -f facharbeit.pdf $(pics) $(gnuplot) *.aux *.log *.toc *.fls *.fdb_*
 
