@@ -3,5 +3,11 @@
 *.pdf
 *.toc
 
+*.fls
+*.fdb_*
+
 skizze1.tex
 skizze2.tex
+funktion1.tex
+
+/.idea
